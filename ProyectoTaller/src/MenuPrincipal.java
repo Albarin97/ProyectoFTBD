@@ -272,35 +272,47 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
-
+        Altas altas = new Altas();
+        altas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
-
+        Bajas bajas = new Bajas();
+        bajas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnBajaActionPerformed
 
     private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
-
+        Bajas bajas = new Bajas();
+        bajas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCambioActionPerformed
 
     private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
-
+        Consulta consul = new Consulta();
+        consul.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnConsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsulta1ActionPerformed
-
+        Consulta2 consul2 = new Consulta2();
+        consul2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnConsulta1ActionPerformed
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-
+        Ventas ven = new Ventas();
+        ven.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVenderActionPerformed
     
     private void btnGrafActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafActionPerformed
-
+        new Elegir().setVisible(true);
     }//GEN-LAST:event_btnGrafActionPerformed
 
     private void btnAlta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlta2ActionPerformed
-
+        new Portada().setVisible(true);
     }//GEN-LAST:event_btnAlta2ActionPerformed
 
     /**
