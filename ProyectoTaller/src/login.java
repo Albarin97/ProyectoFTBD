@@ -163,7 +163,23 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfUsuarioActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-
+        MenuPrincipal mp = new MenuPrincipal();
+        Altas al = new Altas();
+        String con = jtfContra.getText();
+        String us = jtfUsuario.getText();
+        if(us.equalsIgnoreCase("albar") && con.equals("albar")){
+            if(Conexion.getConnection()!=null){
+                al.setVisible(true);
+                al.actualizarT();
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this,"No hay conexion a la Base de Datos","Error",JOptionPane.WARNING_MESSAGE);
+            }
+            
+        mp.bienvenido(us);
+        }else{
+            JOptionPane.showMessageDialog(this,"Contraseña y/o usuario incorrecta","Error",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
