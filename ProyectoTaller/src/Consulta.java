@@ -183,7 +183,13 @@ public class Consulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBajaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaBuscarActionPerformed
-
+        if(!jtfID.getText().equalsIgnoreCase("")){
+            id = jtfID.getText();
+            verTabla(jtConsulta, "SELECT * FROM productos WHERE idproducto='"+id+"';");
+            JOptionPane.showMessageDialog(this,"Buscando...","Aviso",JOptionPane.WARNING_MESSAGE);
+        }else{
+            verTabla(jtConsulta, "SELECT * FROM productos");
+        }
     }//GEN-LAST:event_btnBajaBuscarActionPerformed
 
     public void verTabla(JTable tabla,String com){
