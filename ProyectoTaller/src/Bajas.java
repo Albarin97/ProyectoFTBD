@@ -420,7 +420,17 @@ public class Bajas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBajaBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-
+        id = jtfID.getText();
+        if(!id.equalsIgnoreCase("") && jcbMarca.getSelectedIndex()!=0 && jcbTipo.getSelectedIndex()!=0 && !jtfModelo.getText().equalsIgnoreCase("") && !spnCantidad.getValue().equals(0) && !spnPrecio.getValue().equals(0)){
+            String sql = "BEGIN;\nUPDATE public.productos SET marca='"+jcbMarca.getSelectedItem()+"', modelo='"+jtfModelo.getText()+"', tipo='"+jcbTipo.getSelectedItem()+"', precio="+spnPrecio.getValue()+", cantidad="+spnCantidad.getValue()+" WHERE idproducto='"+jtfID.getText()+"';\nCOMMIT;";
+            if(Conexion.Ejecutar(sql)){
+                JOptionPane.showMessageDialog(this,"Actualizado!","Aviso",JOptionPane.WARNING_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this,"Hubo un Error Al Actualizar","Error",JOptionPane.OK_OPTION);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this,"Faltan campos por llenar","Error",JOptionPane.OK_OPTION);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
