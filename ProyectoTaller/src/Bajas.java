@@ -315,7 +315,12 @@ public class Bajas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuAltaActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-
+        jtfID.setText("");
+        jcbMarca.setSelectedIndex(0);
+        jtfModelo.setText("");
+        jcbTipo.setSelectedIndex(0);
+        spnCantidad.setValue(0);
+        spnPrecio.setValue(0);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnBajaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaBuscarActionPerformed
