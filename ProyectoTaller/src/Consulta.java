@@ -193,7 +193,25 @@ public class Consulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBajaBuscarActionPerformed
 
     public void verTabla(JTable tabla,String com){
+        tabla.setDefaultRenderer(Object.class, new render());
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0);
+        ResultSet res=Conexion.Conexion.Consulta(com);
+        try {
+            while(res.next()){
+                Vector v = new Vector();
+                v.add(res.getString(1));
+                v.add(res.getString(2));
+                v.add(res.getString(3));
+                v.add(res.getString(4));
+                v.add(res.getString(5));
+                v.add(res.getString(6));
+                modelo.addRow(v);
+                tabla.setModel(modelo);
+            }
 
+        } catch (Exception e) {
+        }
     }
     private void btnMenuAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuAltaActionPerformed
         MenuPrincipal mp = new MenuPrincipal();
