@@ -269,7 +269,20 @@ public class Ventas extends javax.swing.JFrame {
             
             String sql = "SELECT * FROM productos WHERE idproducto='"+idProducto+"';";
             ResultSet rs = Conexion.Consulta(sql);
-
+            try {
+                while(rs.next()){
+                    try {
+                        precio = rs.getString("precio");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            
+            
+            
             
         }else{
             JOptionPane.showMessageDialog(this,"Faltan Datos","Error",JOptionPane.OK_OPTION);
