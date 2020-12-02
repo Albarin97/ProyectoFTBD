@@ -260,7 +260,23 @@ public class Ventas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRealizarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarAltaActionPerformed
-         
+        if(!jtfIdProducto.getText().equalsIgnoreCase("") && !jtfCliente.getText().equalsIgnoreCase("") && !spnCantidad.getValue().equals(0) && !jtfTelefono.getText().equalsIgnoreCase("") && !jtfDireccion.getText().equalsIgnoreCase("")){
+            idProducto = jtfIdProducto.getText();
+            cliente = jtfCliente.getText();
+            cantidad = Integer.parseInt(spnCantidad.getValue()+"");
+            telefono = jtfTelefono.getText();
+            direccion = jtfDireccion.getText();
+            
+            String sql = "SELECT * FROM productos WHERE idproducto='"+idProducto+"';";
+            ResultSet rs = Conexion.Consulta(sql);
+
+            
+        }else{
+            JOptionPane.showMessageDialog(this,"Faltan Datos","Error",JOptionPane.OK_OPTION);
+        }
+        
+        
+        
     }//GEN-LAST:event_btnRealizarAltaActionPerformed
 
     private void btnMenuAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuAltaActionPerformed
