@@ -306,7 +306,17 @@ public class Bajas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRealizarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarBajaActionPerformed
-
+        
+        if(!jtfID.getText().equalsIgnoreCase("") ){
+            id = jtfID.getText();
+            if(Conexion.Ejecutar("DELETE FROM public.productos WHERE idproducto='"+id+"';")){
+                JOptionPane.showMessageDialog(this,"Baja correcta","Aviso",JOptionPane.WARNING_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this,"Hubo un error al Eliminar","Error",JOptionPane.OK_OPTION);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this,"Debes llenar el campo ID","Error",JOptionPane.OK_OPTION);
+        }
 
     }//GEN-LAST:event_btnRealizarBajaActionPerformed
 
