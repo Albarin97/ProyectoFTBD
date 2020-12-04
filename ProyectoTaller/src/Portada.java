@@ -63,12 +63,12 @@ public class Portada extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("ADMINISTRACIÓN DE BASES DE DATOS");
+        jLabel8.setText("TALLER DE BASES DE DATOS");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("6° SEMESTRE");
+        jLabel9.setText("9° SEMESTRE");
         jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
