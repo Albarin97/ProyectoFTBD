@@ -661,7 +661,51 @@ public void reset(){
     }//GEN-LAST:event_jtfFiltrarKeyReleased
 
     private void jtTablaVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaVentasMouseClicked
+        // TODO add your handling code here:
+        click_tabla = this.jtTablaVentas.rowAtPoint(evt.getPoint());
 
+        String IdVenta = "" + jtTablaVentas.getValueAt(click_tabla, 0);
+        String IdProduto = "" + jtTablaVentas.getValueAt(click_tabla, 1);
+        String Cliente = "" + jtTablaVentas.getValueAt(click_tabla, 2);
+        String Cantidad = "" + jtTablaVentas.getValueAt(click_tabla, 3);
+        String Costo = "" + jtTablaVentas.getValueAt(click_tabla, 4);
+        String Telefono = "" + jtTablaVentas.getValueAt(click_tabla, 5);
+        String Direccion = "" + jtTablaVentas.getValueAt(click_tabla, 6);
+        
+        int x = 0;
+        int column = jtTablaVentas.getColumnModel().getColumnIndexAtX(evt.getX());
+        int Row = evt.getY() / jtTablaVentas.getRowHeight();
+
+        if (Row < jtTablaVentas.getRowCount() && Row >= 0 & column < jtConsulta.getColumnCount() && column >= 0) {
+            Object value = jtTablaVentas.getValueAt(Row, column);
+            if (value instanceof JButton) {
+                System.out.print("-->" + IdVenta + IdProduto + Cliente + Cantidad + Costo + Telefono + Direccion);
+                ((JButton) value).doClick();
+                JButton button = (JButton) value;
+
+                if (button.getName().equals("C")) {
+                    Conexion.Ejecutar("UPDATE public.productos SET cantidad=cantidad-"+Cantidad+" WHERE idproducto='"+IdProduto+"';");
+                    Conexion.Ejecutar("INSERT INTO public.ventasconfirmadas(idproducto, cliente, cantidad, costo, telefono, direccion) VALUES ('"+IdProduto+"', '"+Cliente+"', '"+Cantidad+"', '"+Costo+"', '"+Telefono+"', '"+Direccion+"');");
+                    Conexion.Ejecutar("DELETE FROM public.ventas WHERE idventa='"+IdVenta+"';");
+                    JOptionPane.showMessageDialog(this, "Alta Realizada", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    actualizarT();
+                }
+                if (button.getName().equals("X")) {
+                    
+                    int n = JOptionPane.showConfirmDialog(
+                            null,
+                            "Seguro que quieres cancelar esta venta?!",
+                            "Cuidado!!!",
+                            JOptionPane.YES_NO_OPTION);
+
+                    if (n == JOptionPane.YES_OPTION) {
+                        Conexion.Ejecutar("DELETE FROM public.ventas WHERE idventa='" + IdVenta.toUpperCase() + "';");
+                        actualizarT();
+                        reset();
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_jtTablaVentasMouseClicked
 
     private void btnResTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResTablasActionPerformed
