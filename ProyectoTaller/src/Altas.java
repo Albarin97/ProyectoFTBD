@@ -709,7 +709,7 @@ public void reset(){
     }//GEN-LAST:event_jtTablaVentasMouseClicked
 
     private void btnResTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResTablasActionPerformed
-        
+        actualizarT();
     }//GEN-LAST:event_btnResTablasActionPerformed
 
     private void jtfFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfFiltrarActionPerformed
@@ -719,10 +719,21 @@ public void reset(){
     private void btnPortada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortada1ActionPerformed
 
     }//GEN-LAST:event_btnPortada1ActionPerformed
-
+    
+    //Botones
+    JButton btn1 = new JButton("Modificar");
+    JButton btn2 = new JButton("Eliminar");
+    JButton btn3 = new JButton("Vender");
+    JButton btn4 = new JButton("Confirmar");
+    JButton btn5 = new JButton("Cancelar");
+    
+    public void actualizarT(){
+        ver_tabla(jtConsulta,1);
+        ver_tabla2(jtTablaVentas, "SELECT * FROM ventas");
+    }
     
     private void tabla_vistaMouseClicked(java.awt.event.MouseEvent evt) {                                         
-
+        
  }
     
     /**
