@@ -546,7 +546,55 @@ public void reset(){
     }//GEN-LAST:event_btnPortadaActionPerformed
 
     private void jtConsultaMouseClicked(java.awt.event.MouseEvent evt) {                                        
-                                        
+        // TODO add your handling code here:
+        click_tabla = this.jtConsulta.rowAtPoint(evt.getPoint());
+
+        String IdProducto = "" + jtConsulta.getValueAt(click_tabla, 0);
+        String Marca = "" + jtConsulta.getValueAt(click_tabla, 1);
+        String Modelo = "" + jtConsulta.getValueAt(click_tabla, 2);
+        String Tipo = "" + jtConsulta.getValueAt(click_tabla, 3);
+        String Precio = "" + jtConsulta.getValueAt(click_tabla, 4);
+        String Cantidad = "" + jtConsulta.getValueAt(click_tabla, 5);
+        int x = 0;
+        int column = jtConsulta.getColumnModel().getColumnIndexAtX(evt.getX());
+        int Row = evt.getY() / jtConsulta.getRowHeight();
+
+        if (Row < jtConsulta.getRowCount() && Row >= 0 & column < jtConsulta.getColumnCount() && column >= 0) {
+            Object value = jtConsulta.getValueAt(Row, column);
+            if (value instanceof JButton) {
+                System.out.print(IdProducto + Marca + Modelo + Tipo + Precio + Cantidad);
+                ((JButton) value).doClick();
+                JButton button = (JButton) value;
+
+                if (button.getName().equals("M")) {
+                    jtIDVacio.setText(IdProducto);
+                    jtfModelo.setText(Modelo);
+                    spnCantidad.setValue(Integer.parseInt(Cantidad));
+                    spnPrecio.setValue(Integer.parseInt(Precio));
+                    
+                }
+                if (button.getName().equals("E")) {
+                    
+                    int n = JOptionPane.showConfirmDialog(
+                            null,
+                            "Seguro que quieres eliminar este registro?!",
+                            "Cuidado!!!",
+                            JOptionPane.YES_NO_OPTION);
+
+                    if (n == JOptionPane.YES_OPTION) {
+                        Conexion.Ejecutar("DELETE FROM productos WHERE idproducto='" + IdProducto.toUpperCase() + "';");
+                        actualizarT();
+                        reset();
+                    }
+                }
+                if (button.getName().equals("P")) {
+                    Ventas ven = new Ventas();
+                    ven.x(this);
+                    ven.setVisible(true);
+                    ven.recibirDatos(IdProducto, Marca, Modelo, Tipo, Cantidad);
+                }
+            }
+        }                                        
     }                                       
 
     private void jtfFiltrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFiltrarKeyPressed
