@@ -717,7 +717,25 @@ public void reset(){
     }//GEN-LAST:event_jtfFiltrarActionPerformed
 
     private void btnPortada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortada1ActionPerformed
-
+        try{
+            /*
+            String path = new File("").getAbsoluteFile().getAbsolutePath();
+            String filename=path+"/src/Reportes/ReporteVentas.jrxml";
+            
+            JasperDesign jd = JRXmlLoader.load(filename);
+            JasperReport jasperreport = JasperCompileManager.compileReport(jd);
+            JasperPrint jasperprint = JasperFillManager.fillReport(jasperreport, null, Conexion.con);
+            JasperViewer.viewReport(jasperprint, false);
+            */
+            JasperReport jr =(JasperReport) JRLoader.loadObject(Altas.class.getResource("/Reportes/ReporteVentas.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, Conexion.con);
+            JasperViewer jv = new JasperViewer(jp);
+            jv.show();
+            
+            
+        }catch(Exception ex){
+            System.out.print("--->"+ex);
+        }
     }//GEN-LAST:event_btnPortada1ActionPerformed
     
     //Botones
