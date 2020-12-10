@@ -760,6 +760,39 @@ public void reset(){
         }    
     }
     
+    public void ver_tabla(JTable tabla,int x){
+        tabla.setDefaultRenderer(Object.class, new renderBTNs());
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0);
+        if(x==0){
+            rs = Conexion.consulta1(jtfFiltrar.getText().toUpperCase(), jcbFiltro.getSelectedItem().toString().toLowerCase());
+        }else{
+        rs=Conexion.consultaG();
+        }
+        btn1.setName("M");
+        btn2.setName("E");
+        btn3.setName("P");
+        try {
+            
+            while(rs.next()){
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(btn1);
+                v.add(btn2);
+                v.add(btn3);
+                modelo.addRow(v);
+                tabla.setModel(modelo);
+            }
+                
+        } catch (Exception e) {
+        }    
+    }
+    int click_tabla;
     private void tabla_vistaMouseClicked(java.awt.event.MouseEvent evt) {                                         
         
  }
