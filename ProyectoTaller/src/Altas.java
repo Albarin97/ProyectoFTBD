@@ -473,7 +473,57 @@ public class Altas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
+        if(jtIDVacio.getText().equalsIgnoreCase("")){
+            if (jcbMarca.getSelectedIndex() != 0 && jcbTipo.getSelectedIndex() != 0 && !jtfModelo.getText().equalsIgnoreCase("") && !spnCantidad.getValue().equals(0) && !spnPrecio.getValue().equals(0)) {
+                marca = jcbMarca.getSelectedItem() + "";
+                tipo = jcbTipo.getSelectedItem() + "";
+                modelo = jtfModelo.getText();
+                cantidad = Integer.parseInt(spnCantidad.getValue() + "");
+                precio = Integer.parseInt(spnPrecio.getValue() + "");
 
+                //Generar ID
+                try {
+                    ResultSet res = Conexion.Consulta("SELECT public.registros()");
+                    res.next();
+                    int cont = res.getInt(1);
+                    if (cont == 0) {
+                        if (Conexion.insertar("AMS1", marca.toUpperCase(), modelo.toUpperCase(), tipo.toUpperCase(), precio, cantidad, 1)) {
+                            JOptionPane.showMessageDialog(this, "Alta Realizada", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Hubo un error en la Alta", "Error", JOptionPane.OK_OPTION);
+                        }
+                    } else {
+                        res = Conexion.Consulta("SELECT public.obtenermax()");
+                        res.next();
+                        cont = res.getInt(1);
+                        if (Conexion.insertar("AMS"+cont, marca.toUpperCase(), modelo.toUpperCase(), tipo.toUpperCase(), precio, cantidad, cont)) {
+                            JOptionPane.showMessageDialog(this, "Alta Realizada", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Hubo un error en la Alta", "Error", JOptionPane.OK_OPTION);
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Altas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Faltan Datos", "Error", JOptionPane.OK_OPTION);
+            }
+        }else{
+            if (jcbMarca.getSelectedIndex() != 0 && jcbTipo.getSelectedIndex() != 0 && !jtfModelo.getText().equalsIgnoreCase("") && !spnCantidad.getValue().equals(0) && !spnPrecio.getValue().equals(0)) {
+                marca = jcbMarca.getSelectedItem() + "";
+                tipo = jcbTipo.getSelectedItem() + "";
+                modelo = jtfModelo.getText();
+                cantidad = Integer.parseInt(spnCantidad.getValue() + "");
+                precio = Integer.parseInt(spnPrecio.getValue() + "");
+                String id = jtIDVacio.getText()+"";
+                //Transaccion
+                Conexion.Ejecutar("BEGIN;\nUPDATE public.productos SET marca='"+marca.toUpperCase()+"', modelo='"+modelo.toUpperCase()+"', tipo='"+tipo.toUpperCase()+"', precio="+precio+", cantidad="+cantidad+" WHERE idproducto='"+id.toUpperCase()+"';\nCOMMIT;");
+            } else {
+                JOptionPane.showMessageDialog(this, "Faltan Datos", "Error", JOptionPane.OK_OPTION);
+            }
+        }
+        
+        
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
