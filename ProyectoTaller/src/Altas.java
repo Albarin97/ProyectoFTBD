@@ -571,7 +571,62 @@ public void reset(){
                     jtfModelo.setText(Modelo);
                     spnCantidad.setValue(Integer.parseInt(Cantidad));
                     spnPrecio.setValue(Integer.parseInt(Precio));
-                    
+                    switch(Marca){
+                        case"ITALIKA":
+                            jcbMarca.setSelectedIndex(1);
+                            break;
+                        case"SUZUKI":
+                            jcbMarca.setSelectedIndex(2);
+                            break;
+                        case"YAMAHA":
+                            jcbMarca.setSelectedIndex(3);
+                            break;
+                        case"HONDA":
+                            jcbMarca.setSelectedIndex(4);
+                            break;
+                        case"BAJAJ":
+                            jcbMarca.setSelectedIndex(5);
+                            break;
+                        case"DUCATI":
+                            jcbMarca.setSelectedIndex(6);
+                            break;
+                        case"BMW":
+                            jcbMarca.setSelectedIndex(7);
+                            break;
+                        case"KAWASAKI":
+                            jcbMarca.setSelectedIndex(8);
+                            break;
+                        case"HARLEY-DAVIDSON":
+                            jcbMarca.setSelectedIndex(9);
+                            break;     
+                    }
+
+                    switch(Tipo){
+                        case"DOBLE PROPOSITO":
+                            jcbTipo.setSelectedIndex(1);
+                            break;
+                            case"DEPORTIVA":
+                            jcbTipo.setSelectedIndex(2);
+                            break;
+                            case"TURING":
+                            jcbTipo.setSelectedIndex(3);
+                            break;
+                            case"SCOOTER":
+                            jcbTipo.setSelectedIndex(4);
+                            break;
+                            case"NAKED":
+                            jcbTipo.setSelectedIndex(5);
+                            break;
+                            case"CRUCERO":
+                            jcbTipo.setSelectedIndex(6);
+                            break;
+                            case"ENDURO":
+                            jcbTipo.setSelectedIndex(7);
+                            break;
+                            case"CAFE RACER":
+                            jcbTipo.setSelectedIndex(8);
+                            break;
+                    }
                 }
                 if (button.getName().equals("E")) {
                     
