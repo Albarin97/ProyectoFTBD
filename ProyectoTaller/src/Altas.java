@@ -488,11 +488,11 @@ public void reset(){
         spnPrecio.setValue(0);
 }
     private void btnGrafActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafActionPerformed
-        
+        new Elegir().setVisible(true);
     }//GEN-LAST:event_btnGrafActionPerformed
 
     private void btnPortadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortadaActionPerformed
-        
+        new Portada().setVisible(true);
     }//GEN-LAST:event_btnPortadaActionPerformed
 
     private void jtConsultaMouseClicked(java.awt.event.MouseEvent evt) {                                        
