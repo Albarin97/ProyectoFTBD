@@ -732,6 +732,34 @@ public void reset(){
         ver_tabla2(jtTablaVentas, "SELECT * FROM ventas");
     }
     
+        public void ver_tabla2(JTable tabla,String com){
+        tabla.setDefaultRenderer(Object.class, new renderBTNs());
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0);
+        rs=Conexion.Consulta(com);
+        btn4.setName("C");
+        btn5.setName("X");
+        try {
+            
+            while(rs.next()){
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(btn4);
+                v.add(btn5);
+                modelo.addRow(v);
+                tabla.setModel(modelo);
+            }
+                
+        } catch (Exception e) {
+        }    
+    }
+    
     private void tabla_vistaMouseClicked(java.awt.event.MouseEvent evt) {                                         
         
  }
