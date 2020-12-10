@@ -477,9 +477,16 @@ public class Altas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-
+        reset();
     }//GEN-LAST:event_btnResetActionPerformed
-
+public void reset(){
+    jtIDVacio.setText("");
+        jcbMarca.setSelectedIndex(0);
+        jtfModelo.setText("");
+        jcbTipo.setSelectedIndex(0);
+        spnCantidad.setValue(0);
+        spnPrecio.setValue(0);
+}
     private void btnGrafActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafActionPerformed
         
     }//GEN-LAST:event_btnGrafActionPerformed
