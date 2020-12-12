@@ -523,7 +523,7 @@ public class Altas extends javax.swing.JFrame {
             }
         }
         
-        
+        actualizarT();
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -653,11 +653,11 @@ public void reset(){
     }                                       
 
     private void jtfFiltrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFiltrarKeyPressed
-        
+        ver_tabla(jtConsulta, 0);
     }//GEN-LAST:event_jtfFiltrarKeyPressed
 
     private void jtfFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFiltrarKeyReleased
-        
+        ver_tabla(jtConsulta, 0);
     }//GEN-LAST:event_jtfFiltrarKeyReleased
 
     private void jtTablaVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaVentasMouseClicked
@@ -717,8 +717,11 @@ public void reset(){
     }//GEN-LAST:event_jtfFiltrarActionPerformed
 
     private void btnPortada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortada1ActionPerformed
+        Consulta2 cs2 = new Consulta2();
+        cs2.setVisible(true);
+        /*
         try{
-            /*
+            
             String path = new File("").getAbsoluteFile().getAbsolutePath();
             String filename=path+"/src/Reportes/ReporteVentas.jrxml";
             
@@ -726,7 +729,7 @@ public void reset(){
             JasperReport jasperreport = JasperCompileManager.compileReport(jd);
             JasperPrint jasperprint = JasperFillManager.fillReport(jasperreport, null, Conexion.con);
             JasperViewer.viewReport(jasperprint, false);
-            */
+            
             JasperReport jr =(JasperReport) JRLoader.loadObject(Altas.class.getResource("/Reportes/ReporteVentas.jasper"));
             JasperPrint jp = JasperFillManager.fillReport(jr, null, Conexion.con);
             JasperViewer jv = new JasperViewer(jp);
@@ -736,6 +739,7 @@ public void reset(){
         }catch(Exception ex){
             System.out.print("--->"+ex);
         }
+        */
     }//GEN-LAST:event_btnPortada1ActionPerformed
     
     //Botones

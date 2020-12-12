@@ -73,7 +73,7 @@ public class Consulta2 extends javax.swing.JFrame {
 
         btnBajaBuscar.setBackground(new java.awt.Color(144, 12, 63));
         btnBajaBuscar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnBajaBuscar.setText("Buscar");
+        btnBajaBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-cita-recurrente-24.png"))); // NOI18N
         btnBajaBuscar.setBorder(null);
         btnBajaBuscar.setBorderPainted(false);
         btnBajaBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -112,7 +112,7 @@ public class Consulta2 extends javax.swing.JFrame {
 
         btnMenuAlta.setBackground(new java.awt.Color(199, 0, 57));
         btnMenuAlta.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnMenuAlta.setText("Menu");
+        btnMenuAlta.setText("Cerrar");
         btnMenuAlta.setBorder(null);
         btnMenuAlta.setBorderPainted(false);
         btnMenuAlta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -183,8 +183,7 @@ public class Consulta2 extends javax.swing.JFrame {
     private void btnBajaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaBuscarActionPerformed
         if(!jtfID.getText().equalsIgnoreCase("")){
             id = jtfID.getText();
-            verTabla(jtConsulta2, "SELECT * FROM public.pedidos WHERE idventa='"+id+"';");
-            JOptionPane.showMessageDialog(this,"Buscando...","Aviso",JOptionPane.WARNING_MESSAGE);
+            verTabla(jtConsulta2, "SELECT * FROM public.pedidos WHERE idventa='"+id+"';");         
         }else{
             verTabla(jtConsulta2, "SELECT * FROM public.pedidos");
         }
@@ -214,8 +213,6 @@ public class Consulta2 extends javax.swing.JFrame {
     }
     
     private void btnMenuAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuAltaActionPerformed
-        MenuPrincipal mp = new MenuPrincipal();
-        mp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuAltaActionPerformed
 
